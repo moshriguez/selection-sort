@@ -1,5 +1,12 @@
 function selectionSort(arr) {
-  // type your code here
+  const sorted = []
+  while (arr.length > 0) {
+    const min = Math.min(...arr)
+    sorted.push(min)
+    const i = arr.indexOf(min)
+    arr.splice(i, 1)
+  }
+  return sorted
 }
 
 if (require.main === module) {
@@ -7,7 +14,15 @@ if (require.main === module) {
   console.log("Expecting: [-1, 2, 3, 5]");
   console.log("=>", selectionSort([3, -1, 5, 2]));
 
-  console.log("");
+  console.log("Expecting: [-1, -1, 3, 5]");
+  console.log("=>", selectionSort([3, -1, 5, -1]));
+
+  console.log("Expecting: [-55, -1, 3, 5]");
+  console.log("=>", selectionSort([3, -1, 5, -55]));
+
+  console.log("Expecting: [-55, -1, 5, 37]");
+  console.log("=>", selectionSort([37, -1, 5, -55]));
+
 
   // BENCHMARK HERE, and print the average runtime
   const longInput = [];
